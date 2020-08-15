@@ -59,7 +59,7 @@ etaPlotVector = linspace(-1, 1, nPlotPointsVector_eta);  % the points where to e
 %   (E^{1,0})^{T} epsilon_{1} = epsilon_{0}
 % Where E^{1,0} is the incidence matrix from nodes to edges, i.e. the
 % discrete exterior derivative for 0-forms
-E10 = mimeticFEM.dZero(p);  % the incidence matrix E^{10}
+E10 = mimeticFEM.dHGradBasisPrimal(p);  % the incidence matrix E^{10}
 epsilon_1 = mimeticFEM.HCurlBasisPrimal(xiPlotVector, etaPlotVector, p, true);  
 
 d_epsilon_0_dxi = E10(1:p*(p+1), :)' * epsilon_1(1:p*(p+1), :);
@@ -101,7 +101,7 @@ set(gca,'yticklabel', 1:p+1)
 % With some swap of axis
 % Where E^{1,0} is the incidence matrix from nodes to edges, i.e. the
 % discrete exterior derivative for 0-forms
-E10 = mimeticFEM.dZero(p);  % the incidence matrix E^{10}
+E10 = mimeticFEM.dHGradBasisPrimal(p);  % the incidence matrix E^{10}
 epsilon_1 = mimeticFEM.HDivBasisPrimal(xiPlotVector, etaPlotVector, p, true);  
 
 d_epsilon_0_dxi = E10((p*(p+1)+1):end, :)' * epsilon_1(1:p*(p+1), :);
@@ -140,7 +140,7 @@ set(gca,'yticklabel', 1:p+1)
 %   (E^{2,1})^{T} epsilon_{2} = epsilon_{1}
 % Where E^{1,0} is the incidence matrix from nodes to edges, i.e. the
 % discrete exterior derivative for 1-forms
-E21 = mimeticFEM.dOne(p);  % the incidence matrix E^{21}
+E21 = mimeticFEM.dHDivBasisPrimal(p);  % the incidence matrix E^{21}
 epsilon_2 = mimeticFEM.L2BasisPrimal(xiPlotScalar, etaPlotScalar, p, true);  
 
 d_epsilon_1_dxi = E21(:, 1:(p*(p+1)))' * epsilon_2;
@@ -200,7 +200,7 @@ set(gca,'yticklabel', 1:p)
 %   (E^{2,1})^{T} epsilon_{2} = epsilon_{1}
 % Where E^{1,0} is the incidence matrix from nodes to edges, i.e. the
 % discrete exterior derivative for 1-forms
-E21 = mimeticFEM.dOne(p);  % the incidence matrix E^{21}
+E21 = mimeticFEM.dHCurlBasisPrimal(p);  % the incidence matrix E^{21}
 epsilon_2 = mimeticFEM.L2BasisPrimal(xiPlotScalar, etaPlotScalar, p, true);  
 
 d_epsilon_1_dxi = E21(:, 1:(p*(p+1)))' * epsilon_2;
@@ -219,10 +219,10 @@ for kXi = 1:p
     end
 end
 
-title('Div Hdiv dxi basis functions')
+title('Curl Hcurl dxi basis functions')
 xlabel('\xi')
 ylabel('\eta')
-zlabel('\nabla\cdot\epsilon^{1}(\xi, \eta)')
+zlabel('\nabla\times\epsilon^{1}(\xi, \eta)')
 view([-35 80])
 set(gca,'xtick', (0:p) * plot_offset)
 set(gca,'xticklabel', 1:p)
@@ -242,10 +242,10 @@ for kXi = 1:p
     end
 end
 
-title('Div Hdiv deta basis functions')
+title('Curl Hcurl deta basis functions')
 xlabel('\xi')
 ylabel('\eta')
-zlabel('\nabla\cdot\epsilon^{1}(\xi, \eta)')
+zlabel('\nabla\times\epsilon^{1}(\xi, \eta)')
 view([-35 80])
 set(gca,'xtick', (0:p) * plot_offset)
 set(gca,'xticklabel', 1:p)

@@ -1,8 +1,8 @@
-function [epsilon_0] = H1BasisPrimal(xi, eta, p, tensorGrid)
+function [epsilon_0] = HGradBasisPrimal(xi, eta, p, tensorGrid)
 %H1BasisPrimal Returns (p+1)x(p+1) 2D basis of H1 primal space
 %
 %
-% Computes the 2D H1 primal space basis functions by tensor product of 1D
+% Computes the 2D HGrad (H1) primal space basis functions by tensor product of 1D
 % Lobatto polynomial basis functions at the points defines by the
 % coordinates xi and eta. If tensorGrid is set to true then xi and eta are
 % the xi and eta coordinates of a tensor grid. If tensorGrid is false then
@@ -11,12 +11,12 @@ function [epsilon_0] = H1BasisPrimal(xi, eta, p, tensorGrid)
 %
 %   USAGE
 %   -----
-%       [epsilon_0] = H1BasisPrimal(xi, eta, p, false)
+%       [epsilon_0] = HGradBasisPrimal(xi, eta, p, false)
 %
 %       Gives the (p+1)x(p+1) primal basis functions of H1 space, evaluated
 %       at the points (xi(k), eta(k)).
 %
-%       [epsilon_0] = H1BasisPrimal(xi, eta, p, true)
+%       [epsilon_0] = HGradBasisPrimal(xi, eta, p, true)
 %
 %       Gives the (p+1)x(p+1) primal basis functions of H1 space, evaluated
 %       at the points (xi(i), eta(j)).
@@ -51,6 +51,8 @@ function [epsilon_0] = H1BasisPrimal(xi, eta, p, tensorGrid)
 %   Copyright 2020 Artur Palha
 
 %   Revisions:  2020-02-15 (apalha) First implementation.
+%               2020-08-14 (apalha) Changed to HGradBasisPrimal for consistency
+%                                   naming with the differential operators.
 
     if tensorGrid  % use the nodes as tensor grid
         % Compute the H1 basis functions based on tensor product of Lagrange interpolants over

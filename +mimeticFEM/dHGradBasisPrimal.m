@@ -1,10 +1,10 @@
-function D = dZero(p,varargin)
-%dZero computes the discrete exterior derivative of discrete zero forms in
-%one spectral element of order p.
+function D = dHGradBasisPrimal(p,varargin)
+%dHGradBasisPrimal computes the discrete exterior derivative of elements of
+%   HGradBasisPrimal.
 %
 %   USAGE
 %   -----
-%       D = dZero(p)
+%       D = dHGradBasisPrimal(p)
 %
 %   INPUTS
 %   ------

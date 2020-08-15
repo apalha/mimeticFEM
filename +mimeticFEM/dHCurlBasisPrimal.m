@@ -1,16 +1,15 @@
-function D = dOne(p)
-%dOne computes the discrete exterior derivative of one forms.
+function D = dHCurlBasisPrimal(p)
+%dHCurlBasisPrimal computes the discrete exterior derivative of elements 
+%   of HCurlBasisPrimal.
 %
-%   D = dOne(p)
+%   D = dHCurlBasisPrimal(p)
 %
 %   where D is the matrix of 1 and -1 entries that represents the discrete
 %   exterior derivate (xi and eta part) of discrete one forms. It is a
 %   sparse matrix.
-%
-%   See also: DONEXI, DONEETA
 
-%   Copyright 2009 Artur Palha
-%   $Revision: 1.0 $  $Date: 2009/12/17 13:49:00 $
+%   Copyright 2020 Artur Palha
+%   $Revision: 1.0 $  $Date: 2020/08/14$
     
     % eta part
     iiEtaMinus = (1:(p*p))';
